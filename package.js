@@ -1,21 +1,34 @@
 Package.describe({
   "summary": "Easily include ace, receive reactive varibles for cursor position, editor contents, etc",
-  "version": "0.0.42",
+  "version": "0.0.44",
   "name": "dcsan:reactive-ace",
   "git": 'https://github.com/dcsan/meteor-reactive-ace.git'
 });
+
+console.log(Package)
 
 var bundlerApi = null
 var path = Npm.require("path");
 var fs = Npm.require("fs");
 
-// var packagePath = path.join(path.resolve("."), "packages", "reactive-ace");
-var packagePath = path.join(path.resolve(".") );
+if (process.env.PACKAGE_DIRS) {
+  // console.log("dirName:", __dirname);  // breaks
+  // console.log(require.main.filename);
+  // packagesDevDir = "/" 
+  // var packagePath = path.join(path.resolve("."), packagesDevDir );
+  console.log("package DEVMODE");
+  var packageRoot="/Users/dc/dev/shumi/package-dev/packages/core"
+} else {
+  // find packages in appDir
+  var packageRoot = path.join(path.resolve("."), "packages");
+}
 
-// console.log("packagePath:", packagePath);
-// console.log("dirName:", __dirname);
-// console.log("cwd:", path.resolve(".") );
-// console.log(require.main.filename)
+packagePath = path.join(packageRoot, "reactive-ace");
+
+console.log("cwd:", path.resolve(".") );
+console.log("packageRoot:", packageRoot);
+console.log("packagePath:", packagePath);
+
 
 Package.on_use(function (api, where) {
   api.use([
@@ -26,10 +39,12 @@ Package.on_use(function (api, where) {
     "deps@1.0.0"
   ], ["client"]);
 
+  //changed to use pre-included ace version
   // var srcPath = path.join(packagePath, "ace-builds", "src")
   var srcPath = path.join(packagePath, "vendor", "ace", "src")
   console.log('srcPath', srcPath)
   var files = fs.readdirSync(srcPath);
+
   files.forEach(function(file){
     console.log("add_file", file)
     if (file === "snippets"){return;}
