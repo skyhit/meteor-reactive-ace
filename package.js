@@ -16,8 +16,8 @@ if (process.env.PACKAGE_DIRS) {
   // console.log(require.main.filename);
   // packagesDevDir = "/" 
   // var packagePath = path.join(path.resolve("."), packagesDevDir );
-  console.log("package DEVMODE");
-  var packageRoot="/Users/dc/dev/shumi/package-dev/packages/core"
+  var packageRoot=process.env.PACKAGE_DIRS
+  console.log("DEVMODE packageRoot:" + packageRoot);
 } else {
   // find packages in appDir
   var packageRoot = path.join(path.resolve("."), "packages");
@@ -46,7 +46,7 @@ Package.on_use(function (api, where) {
   var files = fs.readdirSync(srcPath);
 
   files.forEach(function(file){
-    console.log("add_file", file)
+    //console.log("add_file", file)
     if (file === "snippets"){return;}
     addPath = path.join("vendor", "ace", "src", file);
     api.add_files(addPath, "client", {isAsset: true});

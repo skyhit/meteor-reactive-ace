@@ -1,2 +1,3 @@
 examples/helloAce/packages
 .build*
+.idea
