@@ -13,7 +13,7 @@ If you want to update the version of the ace-editor used, do this:
 
 * Clone this repo
 
-`git clone git://github.com/mad-eye/meteor-reactive-ace.git; cd meteor-reactive-ace`
+`git clone git://github.com/dcsan/meteor-reactive-ace.git; cd meteor-reactive-ace`
 
 * Update submodules
 
