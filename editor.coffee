@@ -5,7 +5,7 @@ defaultParseOptions =
   tolerant: false # tolerate errors, include errors: []; doesn't seem to work yet
   comments: false # comments: [type: value:]
 
-author_prefix = "dcsan_"
+author_prefix = "skyhit_"
 
 ACE_PREFIX = Meteor.settings?.public?.acePrefix || "/packages/#{author_prefix}reactive-ace/vendor/ace/src"
 
